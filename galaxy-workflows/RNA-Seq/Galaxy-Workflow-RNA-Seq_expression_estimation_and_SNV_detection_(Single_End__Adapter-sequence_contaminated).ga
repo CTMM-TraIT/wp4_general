@@ -22,8 +22,8 @@
                 }
             ], 
             "position": {
-                "left": 199.98957872390747, 
-                "top": 199.9896092414856
+                "left": 199.9722294807434, 
+                "top": 199.95487070083618
             }, 
             "post_job_actions": {
                 "HideDatasetActionoutput_file": {
@@ -52,8 +52,8 @@
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
-                "left": 199.98957872390747, 
-                "top": 345.75349473953247
+                "left": 199.9722294807434, 
+                "top": 345.7361207008362
             }, 
             "tool_errors": null, 
             "tool_id": null, 
@@ -100,8 +100,8 @@
                 }
             ], 
             "position": {
-                "left": 527.7673802375793, 
-                "top": 199.9896092414856
+                "left": 527.7500309944153, 
+                "top": 199.95487070083618
             }, 
             "post_job_actions": {
                 "HideDatasetActionoutput": {
@@ -155,8 +155,8 @@
                 }
             ], 
             "position": {
-                "left": 764.5382542610168, 
-                "top": 199.9896092414856
+                "left": 764.5208687782288, 
+                "top": 199.95487070083618
             }, 
             "post_job_actions": {
                 "HideDatasetActionoutput_file": {
@@ -190,8 +190,8 @@
                 }
             ], 
             "position": {
-                "left": 1036.309067249298, 
-                "top": 199.9896092414856
+                "left": 1036.291718006134, 
+                "top": 199.95487070083618
             }, 
             "post_job_actions": {
                 "HideDatasetActionoutput": {
@@ -258,8 +258,8 @@
                 }
             ], 
             "position": {
-                "left": 1273.0972752571106, 
-                "top": 199.9896092414856
+                "left": 1273.0798954963684, 
+                "top": 199.95487070083618
             }, 
             "post_job_actions": {
                 "HideDatasetActiondeletions": {
@@ -308,8 +308,8 @@
                 }
             ], 
             "position": {
-                "left": 1523.882064819336, 
-                "top": 199.99305725097656
+                "left": 1523.8612065315247, 
+                "top": 199.95487070083618
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -333,7 +333,7 @@
                 }
             }, 
             "inputs": [], 
-            "name": "featureCounts-valid-gff", 
+            "name": "featureCounts", 
             "outputs": [
                 {
                     "name": "output", 
@@ -341,12 +341,12 @@
                 }
             ], 
             "position": {
-                "left": 1523.8785252571106, 
-                "top": 312.54167222976685
+                "left": 1523.8646240234375, 
+                "top": 311.7465572357178
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
-            "tool_id": "toolshed.dtls.nl/repos/yhoogstrate/featurecounts_valid_gff/featurecounts_valid_gff/1.0.0", 
+            "tool_id": "toolshed.dtls.nl/repos/yhoogstrate/featurecounts/featurecounts/1.0.0", 
             "tool_state": "{\"__page__\": 0, \"reference_gene_sets_source\": \"{\\\"reference_gene_sets\\\": null, \\\"__current_case__\\\": 1, \\\"source_select\\\": \\\"history\\\"}\", \"format\": \"\\\"tabdel_default\\\"\", \"__rerun_remap_job_id__\": null, \"threads\": \"\\\"2\\\"\", \"alignments\": \"null\", \"extended_parameters\": \"{\\\"parameters\\\": \\\"default\\\", \\\"__current_case__\\\": 0}\"}", 
             "tool_version": "1.0.0", 
             "type": "tool", 

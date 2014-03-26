@@ -2,7 +2,7 @@
     "a_galaxy_workflow": "true", 
     "annotation": "Estimate the gene expression (as read-counts) of a paired-end RNA-Seq experiment.", 
     "format-version": "0.1", 
-    "name": "RNA-Seq expression estimation (Paired End; Adapter-sequence contaminated", 
+    "name": "RNA-Seq expression estimation (Paired End; Adapter-sequence contaminated)", 
     "steps": {
         "0": {
             "annotation": "Import the raw R1 reads", 
@@ -17,8 +17,8 @@
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
-                "left": 199.98957872390747, 
-                "top": 199.9896092414856
+                "left": 199.95483446121216, 
+                "top": 199.95487260818481
             }, 
             "tool_errors": null, 
             "tool_id": null, 
@@ -40,8 +40,8 @@
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
-                "left": 199.98957872390747, 
-                "top": 284.7639012336731
+                "left": 199.95483446121216, 
+                "top": 284.7465443611145
             }, 
             "tool_errors": null, 
             "tool_id": null, 
@@ -63,8 +63,8 @@
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
-                "left": 199.98957872390747, 
-                "top": 369.5382237434387
+                "left": 199.95483446121216, 
+                "top": 369.5208668708801
             }, 
             "tool_errors": null, 
             "tool_id": null, 
@@ -96,8 +96,8 @@
                 }
             ], 
             "position": {
-                "left": 436.76042222976685, 
-                "top": 199.9896092414856
+                "left": 436.7430729866028, 
+                "top": 199.95487260818481
             }, 
             "post_job_actions": {
                 "HideDatasetActionoutput_file": {
@@ -136,8 +136,8 @@
                 }
             ], 
             "position": {
-                "left": 436.76042222976685, 
-                "top": 345.75349473953247
+                "left": 436.7430729866028, 
+                "top": 345.7361378669739
             }, 
             "post_job_actions": {
                 "HideDatasetActionoutput_file": {
@@ -191,8 +191,8 @@
                 }
             ], 
             "position": {
-                "left": 764.5382542610168, 
-                "top": 199.9896092414856
+                "left": 764.5208516120911, 
+                "top": 199.95487260818481
             }, 
             "post_job_actions": {
                 "HideDatasetActionoutput": {
@@ -266,8 +266,8 @@
                 }
             ], 
             "position": {
-                "left": 764.5382542610168, 
-                "top": 445.7535252571106
+                "left": 764.5208516120911, 
+                "top": 445.7361378669739
             }, 
             "post_job_actions": {
                 "HideDatasetActionoutput": {
@@ -321,8 +321,8 @@
                 }
             ], 
             "position": {
-                "left": 1001.3090672492981, 
-                "top": 199.9896092414856
+                "left": 1001.291702747345, 
+                "top": 199.95487260818481
             }, 
             "post_job_actions": {
                 "HideDatasetActionoutput_file": {
@@ -356,8 +356,8 @@
                 }
             ], 
             "position": {
-                "left": 1001.3090672492981, 
-                "top": 311.76042222976685
+                "left": 1001.291702747345, 
+                "top": 311.74306535720825
             }, 
             "post_job_actions": {
                 "HideDatasetActionoutput_file": {
@@ -391,8 +391,8 @@
                 }
             ], 
             "position": {
-                "left": 1272.090317249298, 
-                "top": 199.9896092414856
+                "left": 1272.072968006134, 
+                "top": 199.95487260818481
             }, 
             "post_job_actions": {
                 "HideDatasetActionoutput": {
@@ -426,8 +426,8 @@
                 }
             ], 
             "position": {
-                "left": 1272.090317249298, 
-                "top": 311.76042222976685
+                "left": 1272.072968006134, 
+                "top": 311.74306535720825
             }, 
             "post_job_actions": {
                 "HideDatasetActionoutput": {
@@ -498,8 +498,8 @@
                 }
             ], 
             "position": {
-                "left": 1508.8785252571106, 
-                "top": 199.9896092414856
+                "left": 1508.8611454963684, 
+                "top": 199.95487260818481
             }, 
             "post_job_actions": {
                 "HideDatasetActiondeletions": {
@@ -534,17 +534,19 @@
             "annotation": "", 
             "id": 12, 
             "input_connections": {
-                "alignments": {
-                    "id": 11, 
-                    "output_name": "accepted_hits"
-                }, 
-                "reference_gene_sets_source|reference_gene_sets": {
-                    "id": 2, 
-                    "output_name": "output"
-                }
+                "alignments": [
+                    {
+                        "id": 2, 
+                        "output_name": "output"
+                    }, 
+                    {
+                        "id": 11, 
+                        "output_name": "accepted_hits"
+                    }
+                ]
             }, 
             "inputs": [], 
-            "name": "featureCounts-valid-gff", 
+            "name": "featureCounts", 
             "outputs": [
                 {
                     "name": "output", 
@@ -552,12 +554,12 @@
                 }
             ], 
             "position": {
-                "left": 1830.649399280548, 
-                "top": 199.9896092414856
+                "left": 1830.635498046875, 
+                "top": 199.97570037841797
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
-            "tool_id": "toolshed.dtls.nl/repos/yhoogstrate/featurecounts_valid_gff/featurecounts_valid_gff/1.0.0", 
+            "tool_id": "toolshed.dtls.nl/repos/yhoogstrate/featurecounts/featurecounts/1.0.0", 
             "tool_state": "{\"__page__\": 0, \"reference_gene_sets_source\": \"{\\\"reference_gene_sets\\\": null, \\\"__current_case__\\\": 1, \\\"source_select\\\": \\\"history\\\"}\", \"format\": \"\\\"tabdel_default\\\"\", \"__rerun_remap_job_id__\": null, \"threads\": \"\\\"2\\\"\", \"alignments\": \"null\", \"extended_parameters\": \"{\\\"parameters\\\": \\\"default\\\", \\\"__current_case__\\\": 0}\"}", 
             "tool_version": "1.0.0", 
             "type": "tool", 
