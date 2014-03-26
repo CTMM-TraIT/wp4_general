@@ -1,0 +1,567 @@
+{
+    "a_galaxy_workflow": "true", 
+    "annotation": "Estimate the gene expression (as read-counts) of a paired-end RNA-Seq experiment.", 
+    "format-version": "0.1", 
+    "name": "RNA-Seq expression estimation (Paired End; Adapter-sequence contaminated", 
+    "steps": {
+        "0": {
+            "annotation": "Import the raw R1 reads", 
+            "id": 0, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "Import the raw R1 reads", 
+                    "name": "Reads (Forwards)"
+                }
+            ], 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 199.98957872390747, 
+                "top": 199.9896092414856
+            }, 
+            "tool_errors": null, 
+            "tool_id": null, 
+            "tool_state": "{\"name\": \"Reads (Forwards)\"}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "user_outputs": []
+        }, 
+        "1": {
+            "annotation": "Import the raw R2 reads", 
+            "id": 1, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "Import the raw R2 reads", 
+                    "name": "Reads (Backwards)"
+                }
+            ], 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 199.98957872390747, 
+                "top": 284.7639012336731
+            }, 
+            "tool_errors": null, 
+            "tool_id": null, 
+            "tool_state": "{\"name\": \"Reads (Backwards)\"}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "user_outputs": []
+        }, 
+        "2": {
+            "annotation": "Ensure this file is compatible with the chosen reference genome!", 
+            "id": 2, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "Ensure this file is compatible with the chosen reference genome!", 
+                    "name": "GFF/GTF Gene annotation file (Reference should be equal to the one used in the Tophat2 alignment)"
+                }
+            ], 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 199.98957872390747, 
+                "top": 369.5382237434387
+            }, 
+            "tool_errors": null, 
+            "tool_id": null, 
+            "tool_state": "{\"name\": \"GFF/GTF Gene annotation file (Reference should be equal to the one used in the Tophat2 alignment)\"}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "user_outputs": []
+        }, 
+        "3": {
+            "annotation": "", 
+            "id": 3, 
+            "input_connections": {
+                "input_file": {
+                    "id": 0, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool FASTQ Groomer", 
+                    "name": "input_type"
+                }
+            ], 
+            "name": "FASTQ Groomer", 
+            "outputs": [
+                {
+                    "name": "output_file", 
+                    "type": "fastqsanger"
+                }
+            ], 
+            "position": {
+                "left": 436.76042222976685, 
+                "top": 199.9896092414856
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutput_file": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output_file"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.0.4", 
+            "tool_state": "{\"__page__\": 0, \"input_type\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"options_type\": \"{\\\"options_type_selector\\\": \\\"basic\\\", \\\"__current_case__\\\": 0}\", \"input_file\": \"null\"}", 
+            "tool_version": "1.0.4", 
+            "type": "tool", 
+            "user_outputs": []
+        }, 
+        "4": {
+            "annotation": "", 
+            "id": 4, 
+            "input_connections": {
+                "input_file": {
+                    "id": 1, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool FASTQ Groomer", 
+                    "name": "input_type"
+                }
+            ], 
+            "name": "FASTQ Groomer", 
+            "outputs": [
+                {
+                    "name": "output_file", 
+                    "type": "fastqsanger"
+                }
+            ], 
+            "position": {
+                "left": 436.76042222976685, 
+                "top": 345.75349473953247
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutput_file": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output_file"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.0.4", 
+            "tool_state": "{\"__page__\": 0, \"input_type\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"options_type\": \"{\\\"options_type_selector\\\": \\\"basic\\\", \\\"__current_case__\\\": 0}\", \"input_file\": \"null\"}", 
+            "tool_version": "1.0.4", 
+            "type": "tool", 
+            "user_outputs": []
+        }, 
+        "5": {
+            "annotation": "Samples that still include ADAPTER sequences (e.g. small RNA-seq) have to be TRIMMED to enhance the alignment quality.", 
+            "id": 5, 
+            "input_connections": {
+                "input": {
+                    "id": 3, 
+                    "output_name": "output_file"
+                }
+            }, 
+            "inputs": [], 
+            "name": "Cutadapt", 
+            "outputs": [
+                {
+                    "name": "report", 
+                    "type": "txt"
+                }, 
+                {
+                    "name": "output", 
+                    "type": "input"
+                }, 
+                {
+                    "name": "rest_output", 
+                    "type": "input"
+                }, 
+                {
+                    "name": "wild_output", 
+                    "type": "txt"
+                }, 
+                {
+                    "name": "too_short_output", 
+                    "type": "input"
+                }, 
+                {
+                    "name": "untrimmed_output", 
+                    "type": "input"
+                }
+            ], 
+            "position": {
+                "left": 764.5382542610168, 
+                "top": 199.9896092414856
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output"
+                }, 
+                "HideDatasetActionrest_output": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "rest_output"
+                }, 
+                "HideDatasetActiontoo_short_output": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "too_short_output"
+                }, 
+                "HideDatasetActionuntrimmed_output": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "untrimmed_output"
+                }, 
+                "HideDatasetActionwild_output": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "wild_output"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/lparsons/cutadapt/cutadapt/1.1.a", 
+            "tool_state": "{\"count\": \"\\\"1\\\"\", \"error_rate\": \"\\\"0.1\\\"\", \"match_read_wildcards\": \"\\\"False\\\"\", \"__page__\": 0, \"output_params\": \"{\\\"output_type\\\": \\\"default\\\", \\\"__current_case__\\\": 0}\", \"__rerun_remap_job_id__\": null, \"overlap\": \"\\\"3\\\"\", \"front_adapters\": \"[{\\\"__index__\\\": 0, \\\"front_adapter_source\\\": {\\\"front_adapter\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"__current_case__\\\": 0, \\\"front_adapter_source_list\\\": \\\"user\\\"}}]\", \"no_match_adapters_wildcards\": \"\\\"False\\\"\", \"input\": \"null\", \"anywhere_adapters\": \"[{\\\"__index__\\\": 0, \\\"anywhere_adapter_source\\\": {\\\"anywhere_adapter\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"anywhere_adapter_source_list\\\": \\\"user\\\", \\\"__current_case__\\\": 0}}]\", \"adapters\": \"[{\\\"__index__\\\": 0, \\\"adapter_source\\\": {\\\"adapter\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"adapter_source_list\\\": \\\"user\\\", \\\"__current_case__\\\": 0}}]\", \"read_modification_params\": \"{\\\"read_modification\\\": \\\"none\\\", \\\"__current_case__\\\": 0}\", \"output_filtering_options\": \"{\\\"output_filtering\\\": \\\"default\\\", \\\"__current_case__\\\": 0}\"}", 
+            "tool_version": "1.1.a", 
+            "type": "tool", 
+            "user_outputs": []
+        }, 
+        "6": {
+            "annotation": "Samples that still include ADAPTER sequences (e.g. small RNA-seq) have to be TRIMMED to enhance the alignment quality.", 
+            "id": 6, 
+            "input_connections": {
+                "input": {
+                    "id": 4, 
+                    "output_name": "output_file"
+                }
+            }, 
+            "inputs": [], 
+            "name": "Cutadapt", 
+            "outputs": [
+                {
+                    "name": "report", 
+                    "type": "txt"
+                }, 
+                {
+                    "name": "output", 
+                    "type": "input"
+                }, 
+                {
+                    "name": "rest_output", 
+                    "type": "input"
+                }, 
+                {
+                    "name": "wild_output", 
+                    "type": "txt"
+                }, 
+                {
+                    "name": "too_short_output", 
+                    "type": "input"
+                }, 
+                {
+                    "name": "untrimmed_output", 
+                    "type": "input"
+                }
+            ], 
+            "position": {
+                "left": 764.5382542610168, 
+                "top": 445.7535252571106
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output"
+                }, 
+                "HideDatasetActionrest_output": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "rest_output"
+                }, 
+                "HideDatasetActiontoo_short_output": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "too_short_output"
+                }, 
+                "HideDatasetActionuntrimmed_output": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "untrimmed_output"
+                }, 
+                "HideDatasetActionwild_output": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "wild_output"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/lparsons/cutadapt/cutadapt/1.1.a", 
+            "tool_state": "{\"count\": \"\\\"1\\\"\", \"error_rate\": \"\\\"0.1\\\"\", \"match_read_wildcards\": \"\\\"False\\\"\", \"__page__\": 0, \"output_params\": \"{\\\"output_type\\\": \\\"default\\\", \\\"__current_case__\\\": 0}\", \"__rerun_remap_job_id__\": null, \"overlap\": \"\\\"3\\\"\", \"front_adapters\": \"[{\\\"__index__\\\": 0, \\\"front_adapter_source\\\": {\\\"front_adapter\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"__current_case__\\\": 0, \\\"front_adapter_source_list\\\": \\\"user\\\"}}]\", \"no_match_adapters_wildcards\": \"\\\"False\\\"\", \"input\": \"null\", \"anywhere_adapters\": \"[{\\\"__index__\\\": 0, \\\"anywhere_adapter_source\\\": {\\\"anywhere_adapter\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"anywhere_adapter_source_list\\\": \\\"user\\\", \\\"__current_case__\\\": 0}}]\", \"adapters\": \"[{\\\"__index__\\\": 0, \\\"adapter_source\\\": {\\\"adapter\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"adapter_source_list\\\": \\\"user\\\", \\\"__current_case__\\\": 0}}]\", \"read_modification_params\": \"{\\\"read_modification\\\": \\\"none\\\", \\\"__current_case__\\\": 0}\", \"output_filtering_options\": \"{\\\"output_filtering\\\": \\\"default\\\", \\\"__current_case__\\\": 0}\"}", 
+            "tool_version": "1.1.a", 
+            "type": "tool", 
+            "user_outputs": []
+        }, 
+        "7": {
+            "annotation": "", 
+            "id": 7, 
+            "input_connections": {
+                "input_file": {
+                    "id": 5, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "name": "FASTQ Quality Trimmer", 
+            "outputs": [
+                {
+                    "name": "output_file", 
+                    "type": "input"
+                }
+            ], 
+            "position": {
+                "left": 1001.3090672492981, 
+                "top": 199.9896092414856
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutput_file": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output_file"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_trimmer_by_quality/fastq_quality_trimmer/1.0.0", 
+            "tool_state": "{\"__page__\": 0, \"score_comparison\": \"\\\">=\\\"\", \"window_size\": \"\\\"1\\\"\", \"trim_ends\": \"\\\"53\\\"\", \"input_file\": \"null\", \"__rerun_remap_job_id__\": null, \"aggregation_action\": \"\\\"min\\\"\", \"quality_score\": \"\\\"20.0\\\"\", \"step_size\": \"\\\"1\\\"\", \"keep_zero_length\": \"\\\"False\\\"\", \"exclude_count\": \"\\\"0\\\"\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "user_outputs": []
+        }, 
+        "8": {
+            "annotation": "", 
+            "id": 8, 
+            "input_connections": {
+                "input_file": {
+                    "id": 6, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "name": "FASTQ Quality Trimmer", 
+            "outputs": [
+                {
+                    "name": "output_file", 
+                    "type": "input"
+                }
+            ], 
+            "position": {
+                "left": 1001.3090672492981, 
+                "top": 311.76042222976685
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutput_file": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output_file"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_trimmer_by_quality/fastq_quality_trimmer/1.0.0", 
+            "tool_state": "{\"__page__\": 0, \"score_comparison\": \"\\\">=\\\"\", \"window_size\": \"\\\"1\\\"\", \"trim_ends\": \"\\\"53\\\"\", \"input_file\": \"null\", \"__rerun_remap_job_id__\": null, \"aggregation_action\": \"\\\"min\\\"\", \"quality_score\": \"\\\"20.0\\\"\", \"step_size\": \"\\\"1\\\"\", \"keep_zero_length\": \"\\\"False\\\"\", \"exclude_count\": \"\\\"0\\\"\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "user_outputs": []
+        }, 
+        "9": {
+            "annotation": "", 
+            "id": 9, 
+            "input_connections": {
+                "input": {
+                    "id": 7, 
+                    "output_name": "output_file"
+                }
+            }, 
+            "inputs": [], 
+            "name": "Filter by quality", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "input"
+                }
+            ], 
+            "position": {
+                "left": 1272.090317249298, 
+                "top": 199.9896092414856
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_quality_filter/cshl_fastq_quality_filter/1.0.0", 
+            "tool_state": "{\"input\": \"null\", \"__rerun_remap_job_id__\": null, \"percent\": \"\\\"90\\\"\", \"quality\": \"\\\"20\\\"\", \"__page__\": 0}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "user_outputs": []
+        }, 
+        "10": {
+            "annotation": "", 
+            "id": 10, 
+            "input_connections": {
+                "input": {
+                    "id": 8, 
+                    "output_name": "output_file"
+                }
+            }, 
+            "inputs": [], 
+            "name": "Filter by quality", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "input"
+                }
+            ], 
+            "position": {
+                "left": 1272.090317249298, 
+                "top": 311.76042222976685
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastq_quality_filter/cshl_fastq_quality_filter/1.0.0", 
+            "tool_state": "{\"input\": \"null\", \"__rerun_remap_job_id__\": null, \"percent\": \"\\\"90\\\"\", \"quality\": \"\\\"20\\\"\", \"__page__\": 0}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "user_outputs": []
+        }, 
+        "11": {
+            "annotation": "", 
+            "id": 11, 
+            "input_connections": {
+                "params|own_junctions|gene_model_ann|gene_annotation_model": {
+                    "id": 2, 
+                    "output_name": "output"
+                }, 
+                "singlePaired|input1": {
+                    "id": 9, 
+                    "output_name": "output"
+                }, 
+                "singlePaired|input2": {
+                    "id": 10, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Tophat2", 
+                    "name": "refGenomeSource"
+                }, 
+                {
+                    "description": "runtime parameter for tool Tophat2", 
+                    "name": "params"
+                }
+            ], 
+            "name": "Tophat2", 
+            "outputs": [
+                {
+                    "name": "align_summary", 
+                    "type": "txt"
+                }, 
+                {
+                    "name": "fusions", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "insertions", 
+                    "type": "bed"
+                }, 
+                {
+                    "name": "deletions", 
+                    "type": "bed"
+                }, 
+                {
+                    "name": "junctions", 
+                    "type": "bed"
+                }, 
+                {
+                    "name": "accepted_hits", 
+                    "type": "bam"
+                }
+            ], 
+            "position": {
+                "left": 1508.8785252571106, 
+                "top": 199.9896092414856
+            }, 
+            "post_job_actions": {
+                "HideDatasetActiondeletions": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "deletions"
+                }, 
+                "HideDatasetActionfusions": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "fusions"
+                }, 
+                "HideDatasetActioninsertions": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "insertions"
+                }, 
+                "HideDatasetActionjunctions": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "junctions"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/tophat2/tophat2/0.6", 
+            "tool_state": "{\"__page__\": 0, \"singlePaired\": \"{\\\"input2\\\": null, \\\"input1\\\": null, \\\"report_discordant_pairs\\\": \\\"Yes\\\", \\\"sPaired\\\": \\\"paired\\\", \\\"__current_case__\\\": 1, \\\"mate_inner_distance\\\": \\\"300\\\", \\\"mate_std_dev\\\": \\\"20\\\"}\", \"__rerun_remap_job_id__\": null, \"readGroup\": \"{\\\"__current_case__\\\": 1, \\\"specReadGroup\\\": \\\"no\\\"}\", \"params\": \"{\\\"min_intron_length\\\": \\\"70\\\", \\\"min_segment_intron\\\": \\\"50\\\", \\\"fusion_search\\\": {\\\"__current_case__\\\": 0, \\\"do_search\\\": \\\"No\\\"}, \\\"seg_mismatches\\\": \\\"2\\\", \\\"library_type\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"settingsType\\\": \\\"full\\\", \\\"coverage_search\\\": {\\\"use_search\\\": \\\"No\\\", \\\"__current_case__\\\": 1}, \\\"splice_mismatches\\\": \\\"0\\\", \\\"max_multihits\\\": \\\"20\\\", \\\"bowtie_n\\\": \\\"No\\\", \\\"read_realign_edit_dist\\\": \\\"1000\\\", \\\"max_intron_length\\\": \\\"500000\\\", \\\"anchor_length\\\": \\\"8\\\", \\\"microexon_search\\\": \\\"No\\\", \\\"indel_search\\\": {\\\"max_insertion_length\\\": \\\"3\\\", \\\"max_deletion_length\\\": \\\"3\\\", \\\"__current_case__\\\": 1, \\\"allow_indel_search\\\": \\\"Yes\\\"}, \\\"read_edit_dist\\\": \\\"2\\\", \\\"own_junctions\\\": {\\\"gene_model_ann\\\": {\\\"gene_annotation_model\\\": null, \\\"use_annotations\\\": \\\"Yes\\\", \\\"__current_case__\\\": 1}, \\\"no_novel_juncs\\\": \\\"No\\\", \\\"use_junctions\\\": \\\"Yes\\\", \\\"__current_case__\\\": 0, \\\"raw_juncs\\\": {\\\"use_juncs\\\": \\\"No\\\", \\\"__current_case__\\\": 0}}, \\\"seg_length\\\": \\\"25\\\", \\\"max_segment_intron\\\": \\\"500000\\\", \\\"bowtie2_settings\\\": {\\\"preset\\\": {\\\"b2_preset_select\\\": \\\"very-sensitive\\\", \\\"__current_case__\\\": 0, \\\"b2_preset\\\": \\\"Yes\\\"}, \\\"__current_case__\\\": 1, \\\"b2_settings\\\": \\\"Yes\\\"}, \\\"__current_case__\\\": 1, \\\"read_mismatches\\\": \\\"2\\\"}\", \"refGenomeSource\": \"{\\\"genomeSource\\\": \\\"indexed\\\", \\\"index\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"__current_case__\\\": 0}\"}", 
+            "tool_version": "0.6", 
+            "type": "tool", 
+            "user_outputs": []
+        }, 
+        "12": {
+            "annotation": "", 
+            "id": 12, 
+            "input_connections": {
+                "alignments": {
+                    "id": 11, 
+                    "output_name": "accepted_hits"
+                }, 
+                "reference_gene_sets_source|reference_gene_sets": {
+                    "id": 2, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "name": "featureCounts-valid-gff", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "tabular"
+                }
+            ], 
+            "position": {
+                "left": 1830.649399280548, 
+                "top": 199.9896092414856
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.dtls.nl/repos/yhoogstrate/featurecounts_valid_gff/featurecounts_valid_gff/1.0.0", 
+            "tool_state": "{\"__page__\": 0, \"reference_gene_sets_source\": \"{\\\"reference_gene_sets\\\": null, \\\"__current_case__\\\": 1, \\\"source_select\\\": \\\"history\\\"}\", \"format\": \"\\\"tabdel_default\\\"\", \"__rerun_remap_job_id__\": null, \"threads\": \"\\\"2\\\"\", \"alignments\": \"null\", \"extended_parameters\": \"{\\\"parameters\\\": \\\"default\\\", \\\"__current_case__\\\": 0}\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "user_outputs": []
+        }
+    }
+}
